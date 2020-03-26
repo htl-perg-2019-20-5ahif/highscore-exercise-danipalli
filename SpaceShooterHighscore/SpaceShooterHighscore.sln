@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29505.145
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShooterHighscore", "SpaceShooterHighscore\SpaceShooterHighscore.csproj", "{2FD612E7-50C6-4420-9E9E-80BDCBB86947}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShooterHighscore.Tests", "SpaceShooterHighscore.Tests\SpaceShooterHighscore.Tests.csproj", "{DF95DBDF-1198-4565-AC95-BDD10553526E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FD612E7-50C6-4420-9E9E-80BDCBB86947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FD612E7-50C6-4420-9E9E-80BDCBB86947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FD612E7-50C6-4420-9E9E-80BDCBB86947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FD612E7-50C6-4420-9E9E-80BDCBB86947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF95DBDF-1198-4565-AC95-BDD10553526E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF95DBDF-1198-4565-AC95-BDD10553526E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF95DBDF-1198-4565-AC95-BDD10553526E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF95DBDF-1198-4565-AC95-BDD10553526E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59D3E942-4D59-451F-B154-26DABC34F4B8}
+	EndGlobalSection
+EndGlobal
