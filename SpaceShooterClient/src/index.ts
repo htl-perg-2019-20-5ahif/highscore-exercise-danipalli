@@ -32,6 +32,7 @@ class ShooterScene extends Scene {
   private hits = 0;
 
   private score = 0;
+  private visual = false;
 
   preload() {
     // Preload images so that we can use them in our game
@@ -163,7 +164,10 @@ class ShooterScene extends Scene {
     this.meteors.getChildren().forEach((m: Meteor) => m.kill());
     this.spaceShip.kill();
 
-    document.getElementById('initials_input').style.display = 'block';
+    if (!this.visual) {
+      document.getElementById('initials_input').style.display = 'block';
+      this.visual = true;
+    }
 
     // Display "game over" text
     const text = this.add.text(

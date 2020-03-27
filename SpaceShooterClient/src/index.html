@@ -13,6 +13,15 @@
       <input id="initials_input_box" type="text" />
       <button id="initials_input_send" onclick="sendScoreData()">Send</button>
     </div>
+    <div>
+      <table id="highscore_table" style="display: none;">
+        <tr>
+          <th>Rank</th>
+          <th>Playername</th>
+          <th>Score</th>
+        </tr>
+      </table>
+    </div>
   </body>
   <script>
     function sendScoreData() {
@@ -20,6 +29,71 @@
       const score = document.getElementById('initials_input_score').value;
 
       // HTTP Request for Score
+      var data = JSON.stringify({ Playername: name, Points: parseInt(score) });
+
+      console.log(data);
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          console.log('Highscore Sent');
+          showTable();
+        }
+      };
+
+      xhr.open('POST', 'http://localhost:5000/api/Highscores', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.setRequestHeader('Accept', 'application/json');
+
+      xhr.send(data);
+    }
+    function showTable() {
+      document.getElementById('initials_input').style.display = 'none';
+
+      // HTTP Request for Score
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          console.log('Highscores Received');
+          console.log(this.responseText);
+          let data = JSON.parse(this.responseText);
+          createTable(data);
+        }
+      };
+
+      xhr.open('GET', 'http://localhost:5000/api/Highscores', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.setRequestHeader('Accept', 'application/json');
+
+      xhr.send();
+    }
+    function createTable(data) {
+      let table = document.getElementById('highscore_table');
+      let counter = 0;
+
+      while (counter < data.length) {
+        table.innerHTML +=
+          '<tr>' +
+          '<td>' +
+          counter +
+          '</td>' +
+          '<td>' +
+          data[counter].playername +
+          '</td>' +
+          '<td>' +
+          data[counter].points +
+          '</td>' +
+          '</tr>';
+        counter++;
+      }
+      if (data.length == 0) {
+        table.innerHTML +=
+          '<tr>' + '<td></td>' + '<td>No Players</td>' + '<td></td>' + '</tr>';
+      }
+
+      table.style.display = 'block';
     }
   </script>
 </html>

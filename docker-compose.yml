@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  space-shooter-client:
+    image: danipalli/space-shooter-client
+    ports:
+      - 8080:80
+    depends_on:
+      - space-shooter-api
+  space-shooter-api:
+    environment:
+      ConnectionStrings__DefaultConnection: 'Server=mssqldb;Database=Highscore;User Id=sa;Password=yourStrong(!)Password;'
+    image: danipalli/space-shooter-api
+    ports:
+      - 5000:80
+    depends_on:
+      - mssqldb
+  mssqldb:
+    image: 'mcr.microsoft.com/mssql/server'
+    environment:
+      SA_PASSWORD: 'yourStrong(!)Password'
+      ACCEPT_EULA: 'Y'
+    ports:
+      - 1433:1433
